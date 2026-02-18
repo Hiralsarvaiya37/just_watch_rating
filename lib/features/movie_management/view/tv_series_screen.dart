@@ -22,7 +22,6 @@ class TvSeriesScreen extends StatelessWidget {
                     hintText: "Search series...",
                     hintStyle: TextStyle(color: Colors.white),
                     border: InputBorder.none,
-                  
                   ),
                   onChanged: controller.searchSeries,
                 )
@@ -46,6 +45,14 @@ class TvSeriesScreen extends StatelessWidget {
         child: Obx(() {
           if (controller.filteredList.isEmpty) {
             return Center(child: CircularProgressIndicator());
+          }
+          if (controller.filteredList.isEmpty) {
+            return Center(
+              child: Text(
+                "No series found",
+                style: TextStyle(color: Colors.white70, fontSize: 16),
+              ),
+            );
           }
 
           return ListView.separated(

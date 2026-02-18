@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:just_watch_rating/features/movie_management/model/tv_series_model.dart';
 
-class TvSeriesHelper {
+class TvSeriesRepository {
 
   String baseUrl="https://imdb146.p.rapidapi.com/v1/";
   Future<List<TvSeriesModel>> fetchSeries({String? searchText}) async {

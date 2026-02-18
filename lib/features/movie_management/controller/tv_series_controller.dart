@@ -1,38 +1,30 @@
 import 'package:get/get.dart';
 import 'package:just_watch_rating/features/movie_management/model/tv_series_model.dart';
-import 'package:just_watch_rating/utils/tv_series_helper.dart';
+import 'package:just_watch_rating/features/movie_management/repository/tv_series_repository.dart';
 
 class TvSeriesController extends GetxController {
-  var seriesList = <TvSeriesModel>[].obs;
-  var filteredList = <TvSeriesModel>[].obs;
+  var seriesList = <TvSeriesModel>[].obs;    
+  var filteredList = <TvSeriesModel>[].obs;  
   var isSearching = false.obs;
-  final helper = TvSeriesHelper();
+  final helper = TvSeriesRepository();
 
   @override
   void onInit() {
-    fetchSeries();
+    fetchSeries(); 
     super.onInit();
   }
 
-  Future<void> fetchSeries({String? searchText}) async {
-    seriesList.value = await helper.fetchSeries(searchText: searchText);
+  Future<void> fetchSeries() async {
+    seriesList.value = await helper.fetchSeries();
     filteredList.value = seriesList;
   }
 
-    Future<void> getSeriesApi(String searchText) async {
-   seriesList.value = await helper.fetchSeries(searchText: searchText);
-  }
-
-  void searchSeries(String query) {
+  Future<void> searchSeries(String query) async {
     if (query.isEmpty) {
-      filteredList.value = seriesList;
+      await fetchSeries();
     } else {
-      getSeriesApi(query);
-      filteredList.value = seriesList
-          .where(
-            (item) => item.title.toLowerCase().contains(query.toLowerCase()),
-          )
-          .toList();
+      seriesList.value = await helper.fetchSeries(searchText: query);
+      filteredList.value = seriesList;
     }
   }
 }
