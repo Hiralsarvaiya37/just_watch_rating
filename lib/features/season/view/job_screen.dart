@@ -18,15 +18,15 @@ class JobScreen extends StatelessWidget {
                   controller: controller.searchController,
                   autofocus: true,
                   cursorColor: Colors.greenAccent.shade700,
-                  style:  TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                   onSubmitted: (_) => controller.onSearchSubmitted(),
-                  decoration:  InputDecoration(
-                    hintText: "Search..",
+                  decoration: const InputDecoration(
+                    hintText: "Job title...",
                     hintStyle: TextStyle(color: Colors.white60),
                     border: InputBorder.none,
                   ),
                 )
-              :  Text(
+              : const Text(
                   "Salary Checker",
                   style: TextStyle(
                     color: Colors.white,
@@ -57,39 +57,39 @@ class JobScreen extends StatelessWidget {
 
       body: Obx(() {
         if (controller.isLoading.value) {
-          return  Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         final data = controller.jobData.value;
 
         if (data == null) {
-          return  Center(child: Text("Koi data nahi mila"));
+          return const Center(child: Text("No data"));
         }
 
         return Padding(
-          padding:  EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Card(
             elevation: 4,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             child: Padding(
-              padding:  EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     data.country,
-                    style:  TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                   SizedBox(height: 8),
-                  Text("Code: ${data.countryCode}", style:  TextStyle(fontSize: 16)),
-                  Text("Currency: ${data.currency}", style:  TextStyle(fontSize: 16)),
-                   Divider(height: 30),
+                  const SizedBox(height: 8),
+                  Text("Code: ${data.countryCode}", style: const TextStyle(fontSize: 16)),
+                  Text("Currency: ${data.currency}", style: const TextStyle(fontSize: 16)),
+                  const Divider(height: 30),
                   Text(
                     "Monthly Salary Range",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.blue.shade800),
                   ),
-                   SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -111,12 +111,12 @@ class JobScreen extends StatelessWidget {
       children: [
         Text(
           label,
-          style:  TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
-         SizedBox(height: 6),
+        const SizedBox(height: 6),
         Text(
           "${value.toStringAsFixed(0)} $currency",
-          style:  TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         ),
       ],
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:just_watch_rating/features/season/model/job_model.dart'; // ← apna model path
+import 'package:just_watch_rating/features/season/model/job_model.dart';
 import 'package:just_watch_rating/features/season/repository/job_repository.dart';
 
 class JobController extends GetxController {
@@ -15,31 +15,33 @@ class JobController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
     fetchSalaryData();
+    super.onInit();
   }
 
   Future<void> fetchSalaryData() async {
     try {
       isLoading.value = true;
 
-      final searchText = searchController.text.trim().isEmpty
-          ? "developer"
-          : searchController.text.trim();
-
       final result = await repo.getJobSalaryApi(
-        searchText: searchText,
-        countryCode: "DE", 
+        searchText: searchController.text.trim().isEmpty
+            ? "developer"
+            : searchController.text.trim(),
+        countryCode: "DE",
       );
 
       jobData.value = result;
-
-      print("Data loaded: ${jobData.value}");
     } catch (e) {
-      print("API Error: $e");
+
+      String message = "Dtry again later.";
+      if (e.toString().contains("429")) {
+        message =
+            "API limit cross ho gaya hai. Please try next month or upgrade plan.";
+      }
+
       Get.snackbar(
         "Error",
-        "Data nahi mila, please check internet or job title",
+        message,
         backgroundColor: Colors.red.shade700,
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
