@@ -13,7 +13,6 @@ class JobDetailsController extends GetxController {
 
       final data = await JobDetailsRepository().createUser(model);
 
-      print("API Response: ${data.toJson()}");
       userData.value = data;
     } catch (e) {
       Get.snackbar("Error", e.toString(), snackPosition: SnackPosition.BOTTOM);

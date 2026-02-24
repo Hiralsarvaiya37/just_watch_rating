@@ -45,14 +45,20 @@ class JobDetailsScreen extends StatelessWidget {
 
               final user = controller.userData.value!;
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Name: ${user.name}"),
-                  Text("Job: ${user.job}"),
-                  Text("ID: ${user.id}"),
-                  Text("Created At: ${user.createdAt}"),
-                ],
+              return Card(
+                elevation: 2,
+                child: Padding(
+                  padding:  EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Name: ${user.name}"),
+                      Text("Job: ${user.job}"),
+                      Text("ID: ${user.id}"),
+                      Text("Created At: ${user.createdAt}"),
+                    ],
+                  ),
+                ),
               );
             }),
           ],

@@ -9,10 +9,14 @@ class JobDetailsRepository {
       headers: {"Content-Type": "application/json"},
       body: jsonEncode(model.toJson()),
     );
-    print("Status: ${response.statusCode}, Body: ${response.body}");
-    print("Decoded JSON: $json");
     if (response.statusCode == 201) {
-      return JobDetailsModel.fromJson(jsonDecode(response.body));
+      final responseData = jsonDecode(response.body);
+      return JobDetailsModel(
+        name: model.name,
+        job: model.job,
+        id: responseData['id'].toString(),
+        createdAt: DateTime.now().toString(),
+      );
     } else {
       throw Exception("Failed: ${response.statusCode}");
     }
