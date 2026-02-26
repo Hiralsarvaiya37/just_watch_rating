@@ -12,7 +12,7 @@ class PostDataScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          "Post Data",
+          "Post",
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
