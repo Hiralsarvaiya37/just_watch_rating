@@ -1,18 +1,18 @@
-class UserDetailsModel {
+class UserDetailsIdModel {
   int userId;
   int id;
   String title;
   String body;
 
-  UserDetailsModel({
+  UserDetailsIdModel({
     required this.userId,
     required this.id,
     required this.title,
     required this.body,
   });
 
-  factory UserDetailsModel.fromJson(Map<String, dynamic> json) =>
-      UserDetailsModel(
+  factory UserDetailsIdModel.fromJson(Map<String, dynamic> json) =>
+      UserDetailsIdModel(
         userId: json["userId"],
         id: json["id"],
         title: json["title"],
