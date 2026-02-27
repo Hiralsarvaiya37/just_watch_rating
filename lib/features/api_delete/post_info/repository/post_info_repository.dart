@@ -5,6 +5,7 @@ import 'package:just_watch_rating/features/api_delete/post_info/model/post_info_
 
 class PostInfoRepository {
   Future<List<PostInfoModel>> getData() async {
+    final response = await http.get(
       Uri.parse("https://jsonplaceholder.typicode.com/posts"),
       headers: {"Content-Type": "application/json"},
     );
