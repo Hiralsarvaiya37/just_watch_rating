@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 class ApiHelper {
   static final http.Client _client = http.Client();
 
-  static const Map<String, String> defaultHeaders = {
+  static Map<String, String> defaultHeaders = {
     "Content-Type": "application/json",
   };
 
@@ -19,7 +19,7 @@ class ApiHelper {
 
       final response = await _client
           .get(Uri.parse(url), headers: headers ?? defaultHeaders)
-          .timeout(const Duration(seconds: 30));
+          .timeout(Duration(seconds: 30));
 
       return _handleResponse(response);
     } catch (e) {
@@ -39,7 +39,7 @@ class ApiHelper {
 
       final response = await _client
           .post(Uri.parse(url), body: body, headers: headers ?? defaultHeaders)
-          .timeout(const Duration(seconds: 30));
+          .timeout(Duration(seconds: 30));
 
       return _handleResponse(response);
     } catch (e) {
@@ -59,7 +59,7 @@ class ApiHelper {
 
       final response = await _client
           .put(Uri.parse(url), body: body, headers: headers ?? defaultHeaders)
-          .timeout(const Duration(seconds: 30));
+          .timeout(Duration(seconds: 30));
 
       return _handleResponse(response);
     } catch (e) {
@@ -78,7 +78,7 @@ class ApiHelper {
 
       final response = await _client
           .delete(Uri.parse(url), headers: headers ?? defaultHeaders)
-          .timeout(const Duration(seconds: 30));
+          .timeout(Duration(seconds: 30));
 
       return _handleResponse(response);
     } catch (e) {
