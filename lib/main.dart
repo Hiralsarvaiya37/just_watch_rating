@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:just_watch_rating/features/view/api_demo_screen.dart';
+import 'package:just_watch_rating/features/streambuilder/streambuilder_demo_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Salary Checker',
       debugShowCheckedModeBanner: false,
-      home: ApiDemoScreen(),
+      home: StreambuilderDemoScreen(),
     );
   }
 }
